@@ -13,6 +13,15 @@ sys.path.append(os.path.join(current_dir, "app"))
 sys.path.append(os.path.join(current_dir, "shared"))
 sys.path.append(os.path.join(current_dir, "..", "shared"))
 
+# Load local .env file if present
+env_path = os.path.join(current_dir, ".env")
+if os.path.exists(env_path):
+    with open(env_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if "=" in line and not line.strip().startswith("#"):
+                key, val = line.strip().split("=", 1)
+                os.environ[key.strip()] = val.strip()
+
 from app.agent import app as adk_app
 from google.adk.runners import InMemoryRunner
 from google.genai import types
