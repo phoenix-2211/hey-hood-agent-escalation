@@ -26,13 +26,13 @@ from app.agent import app as adk_app
 from google.adk.runners import InMemoryRunner
 from google.genai import types
 
-api = FastAPI(
+app = FastAPI(
     title="Hey Hood — Escalation Agent",
     description="ADK 2.0 agent for escalating overdue neighborhood issues",
     version="1.0.0"
 )
 
-api.add_middleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
@@ -48,11 +48,11 @@ class AgentResponse(BaseModel):
     action: str
     result: dict
 
-@api.get("/health")
+@app.get("/health")
 async def health():
     return {"status": "healthy", "agent": "escalation"}
 
-@api.post("/run", response_model=AgentResponse)
+@app.post("/run", response_model=AgentResponse)
 async def run_agent(input_data: EscalationInput):
     try:
         runner = InMemoryRunner(app=adk_app)
