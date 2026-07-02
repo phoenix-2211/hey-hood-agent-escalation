@@ -10,6 +10,7 @@ import json
 # Ensure app path and shared path are importable
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(current_dir, "app"))
+sys.path.append(os.path.join(current_dir, "shared"))
 sys.path.append(os.path.join(current_dir, "..", "shared"))
 
 from app.agent import app as adk_app

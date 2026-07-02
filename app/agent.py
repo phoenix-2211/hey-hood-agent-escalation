@@ -12,7 +12,9 @@ from google.adk.events.event_actions import EventActions
 from google.adk.workflow import Edge, Workflow, node
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-shared_dir = os.path.abspath(os.path.join(current_dir, "..", "..", "shared"))
+shared_dir = os.path.abspath(os.path.join(current_dir, "..", "shared"))
+if not os.path.exists(os.path.join(shared_dir, "firestore_client.py")):
+    shared_dir = os.path.abspath(os.path.join(current_dir, "..", "..", "shared"))
 sys.path.append(shared_dir)
 import firestore_client  # noqa: E402
 
