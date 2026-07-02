@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv
+venv/
+*.json.key
+firebase_credentials.json
+*-firebase-adminsdk-*.json
+hey-hood-prod-*.json
+.pytest_cache/
+dist/
+*.egg-info/
+.agents/
+out.txt
+err.txt
