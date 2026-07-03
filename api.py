@@ -93,6 +93,10 @@ async def run_agent(input_data: EscalationInput):
             detail=str(e)
         )
 
+@app.get("/run", response_model=AgentResponse)
+async def run_agent_get():
+    return await run_agent(EscalationInput(trigger="scheduled"))
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(api, host="0.0.0.0", port=port)

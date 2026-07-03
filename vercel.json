@@ -10,5 +10,11 @@
       "src": "/(.*)",
       "dest": "api.py"
     }
+  ],
+  "crons": [
+    {
+      "path": "/run",
+      "schedule": "0 */6 * * *"
+    }
   ]
 }
